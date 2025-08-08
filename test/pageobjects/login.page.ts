@@ -19,6 +19,18 @@ export default class LoginPage {
         return $('#login-button');
     }
 
+    public get errorContainer(): ChainablePromiseElement {
+        return $("error-message-container");
+    }
+
+    public get errorIcon(): ChainablePromiseElement {
+        return $(".error-button");
+    }
+
+    public get errorText(): ChainablePromiseElement {
+        return $("h3[data-test=\"error\"]");
+    }
+
     public async login(userName: string, password: string) {
         await this.inputUsername.setValue(userName);
         await this.inputPassword.setValue(password);
