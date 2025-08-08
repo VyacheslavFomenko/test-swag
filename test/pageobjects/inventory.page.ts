@@ -1,7 +1,7 @@
-import { ChainablePromiseElement } from 'webdriverio';
+import {ChainablePromiseElement} from 'webdriverio';
 
 export default class InventoryPage {
-    private get inventoryContainer(): ChainablePromiseElement{
+    private get inventoryContainer(): ChainablePromiseElement {
         return $("#inventory_container");
     }
 
