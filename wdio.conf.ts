@@ -1,4 +1,6 @@
 import type { Options } from '@wdio/types';
+import { config as loadEnv } from 'dotenv';
+loadEnv();
 
 export const config: WebdriverIO.Config = {
     //
