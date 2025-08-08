@@ -36,4 +36,12 @@ export default class LoginPage {
         await this.inputPassword.setValue(password);
         await this.submit.click();
     }
+
+    public async getUsernameValue(): Promise<string> {
+        return this.inputUsername.getValue();
+    }
+
+    public async getPasswordValue(): Promise<string> {
+        return this.inputPassword.getValue();
+    }
 }
