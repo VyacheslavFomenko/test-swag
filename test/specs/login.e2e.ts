@@ -1,4 +1,4 @@
-import {expect} from '@wdio/globals'
+import { expect } from '@wdio/globals';
 import LoginPage from '../pageobjects/login.page'
 import InventoryPage from "../pageobjects/inventory.page";
 import {faker} from '@faker-js/faker';

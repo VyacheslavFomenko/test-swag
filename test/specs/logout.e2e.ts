@@ -1,5 +1,6 @@
 import LoginPage from "../pageobjects/login.page";
 import InventoryPage from "../pageobjects/inventory.page";
+import {$, expect } from '@wdio/globals';
 
 describe("Test Logout flow", () => {
     let loginPage: LoginPage;
