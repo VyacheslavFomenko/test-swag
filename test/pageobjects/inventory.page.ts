@@ -13,13 +13,21 @@ export default class InventoryPage {
         return $("#logout_sidebar_link")
     }
 
+    public addToCartBtn(id: string): ChainablePromiseElement {
+        return $(`#add-to-cart-${id}`);
+    }
+
+    public async addToCart(id: string): Promise<void> {
+        await this.addToCartBtn(id).click();
+    }
+
     public async openMenu(): Promise<void> {
-        await this.menuButton.waitForClickable({ timeout: 5000 });
+        await this.menuButton.waitForClickable({timeout: 5000});
         await this.menuButton.click();
     }
 
     public async logout(): Promise<void> {
-        await this.logoutBtn.waitForClickable({ timeout: 5000 });
+        await this.logoutBtn.waitForClickable({timeout: 5000});
         await this.logoutBtn.click();
     }
 
