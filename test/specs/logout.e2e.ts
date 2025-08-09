@@ -1,6 +1,6 @@
 import LoginPage from "../pageobjects/login.page";
 import InventoryPage from "../pageobjects/inventory.page";
-import {$, expect } from '@wdio/globals';
+import {$, browser, expect} from '@wdio/globals';
 
 describe("Test Logout flow", () => {
     let loginPage: LoginPage;
@@ -25,6 +25,11 @@ describe("Test Logout flow", () => {
         await expect($("#inventory_sidebar_link")).toBeDisplayed();
 
         await inventoryPage.logout();
+
+        await browser.waitUntil(async () => (await browser.getUrl()).includes('/'), {
+            timeout: 5000,
+            timeoutMsg: 'URL does not contain "/"'
+        });
 
         await expect(loginPage.getUsernameValue()).resolves.toBe("");
         await expect(loginPage.getPasswordValue()).resolves.toBe("");
