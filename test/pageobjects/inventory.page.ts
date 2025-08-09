@@ -5,6 +5,14 @@ export default class InventoryPage {
         return $("#inventory_container");
     }
 
+    public get cartBadge() {
+        return $('[data-test="shopping-cart-badge"]');
+    }
+
+    public get cartLink() {
+        return $('[data-test="shopping-cart-link"]');
+    }
+
     private get menuButton(): ChainablePromiseElement {
         return $("#react-burger-menu-btn")
     }
