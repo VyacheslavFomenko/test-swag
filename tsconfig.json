@@ -16,8 +16,7 @@
   "include": [
     "src/**/*.ts",
     "test/**/*.ts",
-    // wherever your specs & pageobjects live
-    "@wdio/globals/types"
-    // make sure TS picks up those definitions
+    "@wdio/globals/types",
+    "./wdio.conf.ts"
   ]
 }
