@@ -1,6 +1,8 @@
 export default class CardPage {
     public get container() { return $('#cart_contents_container'); }
     public get checkoutBtn() { return $('[data-test="checkout"]'); }
+    public get emptyError() { return $('[data-test="cart-error"]'); }        // ← подставь свой
+    get items() { return $$('[data-test="inventory-item"]'); }
 
     async assertLoaded() { await expect(this.container).toBeDisplayed(); }
 
@@ -28,6 +30,10 @@ export default class CardPage {
     }
 
     async checkout() { await this.checkoutBtn.click(); }
+
+    async assertEmpty() {
+        await expect(this.items).toBeElementsArrayOfSize(0);
+    }
 }
 
 const money = (s: string) => Number(s.replace(/[^\d.]/g, ''));
