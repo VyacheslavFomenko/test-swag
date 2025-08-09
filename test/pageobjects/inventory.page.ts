@@ -80,4 +80,24 @@ export default class InventoryPage {
         await expect(this.inventoryContainer).toBeDisplayed();
     }
 
+    async badgeCount(): Promise<number> {
+        const exists = await this.cartBadge.isExisting();
+        return exists ? parseInt(await this.cartBadge.getText(), 10) : 0;
+    }
+
+    public addToCartById = async (slug: string) => {
+        await $(`[data-test="add-to-cart-${slug}"]`).click();
+    };
+
+    public addBackpack = () => this.addToCartById('sauce-labs-backpack');
+
+    public addBikeLight = () => this.addToCartById('sauce-labs-bike-light');
+
+    async openCart() {
+        await $('[data-test="shopping-cart-link"]').click();
+    }
+
+    async expectCartCount(n: number) {
+        await expect(this.cartBadge).toHaveText(String(n));
+    }
 }
