@@ -76,4 +76,8 @@ export default class InventoryPage {
         return arr;
     }
 
+    public async assertLoaded(): Promise<void> {
+        await expect(this.inventoryContainer).toBeDisplayed();
+    }
+
 }
