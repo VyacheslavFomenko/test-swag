@@ -17,12 +17,24 @@ export default class InventoryPage {
         return $("#react-burger-menu-btn")
     }
 
+    public get sortSelect(): ChainablePromiseElement {
+        return $("[data-test='product-sort-container']");
+    }
+
     private get logoutBtn(): ChainablePromiseElement {
         return $("#logout_sidebar_link")
     }
 
     public addToCartBtn(id: string): ChainablePromiseElement {
         return $(`#add-to-cart-${id}`);
+    }
+
+    public get itemNames() {        // список названий
+        return $$("div.inventory_item_name");
+    }
+
+    public get itemPrices() {       // список цен
+        return $$("[data-test='inventory-item-price'], .inventory_item_price");
     }
 
     public async addToCart(id: string): Promise<void> {
@@ -42,4 +54,26 @@ export default class InventoryPage {
     public async isDisplay(): Promise<boolean> {
         return this.inventoryContainer.isDisplayed();
     }
+
+    public async setSort(value: string): Promise<void> {
+        await this.sortSelect.selectByAttribute("value", value);
+    }
+
+    public async getNames(): Promise<string[]> {
+        const els = await this.itemNames;
+        const arr: string[] = [];
+        for (const el of els) arr.push((await el.getText()).trim());
+        return arr;
+    }
+
+    public async getPrices(): Promise<number[]> {
+        const els = await this.itemPrices;
+        const arr: number[] = [];
+        for (const el of els) {
+            const raw = (await el.getText()).trim();
+            arr.push(parseFloat(raw.replace("$", "")));
+        }
+        return arr;
+    }
+
 }
